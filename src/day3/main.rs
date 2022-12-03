@@ -7,7 +7,7 @@ fn main() {
         .map(|line| line.split_at(line.len() / 2))
         .map(|(first, second)| {
             for c in first.chars() {
-                if second.find(c).is_some() {
+                if second.contains(c) {
                     return (ALPHABET.find(c).unwrap() as i32) + 1;
                 }
             }
@@ -24,10 +24,9 @@ fn main() {
             let second = lines[index + 1];
             let third = lines[index + 2];
 
-            for character in first.chars() {
-                if second.contains(character) && third.contains(character) {
-                    return (ALPHABET.find(character).unwrap() as i32) + 1;
-
+            for c in first.chars() {
+                if second.contains(c) && third.contains(c) {
+                    return (ALPHABET.find(c).unwrap() as i32) + 1;
                 }
             }
 
