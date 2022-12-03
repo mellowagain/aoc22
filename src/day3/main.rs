@@ -3,7 +3,8 @@ static ALPHABET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 fn main() {
     let input = include_str!("input.txt");
 
-    let a: i32 = input.lines()
+    let a: i32 = input
+        .lines()
         .map(|line| line.split_at(line.len() / 2))
         .map(|(first, second)| {
             for c in first.chars() {
@@ -17,7 +18,8 @@ fn main() {
         .sum();
 
     let lines: Vec<_> = input.lines().collect();
-    let b: i32 = lines.iter()
+    let b: i32 = lines
+        .iter()
         .enumerate()
         .step_by(3)
         .map(|(index, first)| {
