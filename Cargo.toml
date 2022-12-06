@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 itertools = "0.10.5"
+iter_columns = "0.3.0"
 
 [[bin]]
 name = "day1"
@@ -21,3 +22,7 @@ path = "src/day3/main.rs"
 [[bin]]
 name = "day4"
 path = "src/day4/main.rs"
+
+[[bin]]
+name = "day5"
+path = "src/day5/main.rs"
