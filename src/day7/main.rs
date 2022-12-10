@@ -1,6 +1,6 @@
+use itertools::Itertools;
 use std::collections::HashMap;
 use std::path::PathBuf;
-use itertools::Itertools;
 
 fn main() {
     let directories = parse_file_tree(include_str!("input.txt"));
@@ -40,19 +40,17 @@ fn parse_file_tree(input: &str) -> HashMap<PathBuf, i32> {
     for line in input.lines() {
         if let Some(command) = line.strip_prefix("$ ") {
             match &command[0..2] {
-                "cd" => {
-                    match &command[3..] {
-                        "/" => {
-                            cwd = PathBuf::from("/");
-                        }
-                        ".." => {
-                            cwd.pop();
-                        }
-                        dir => {
-                            cwd.push(dir);
-                        }
+                "cd" => match &command[3..] {
+                    "/" => {
+                        cwd = PathBuf::from("/");
                     }
-                }
+                    ".." => {
+                        cwd.pop();
+                    }
+                    dir => {
+                        cwd.push(dir);
+                    }
+                },
                 "ls" => { /* ignored */ }
                 _ => unreachable!(),
             }
